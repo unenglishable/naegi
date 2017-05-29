@@ -1,7 +1,7 @@
 {
   "name": "naegi",
   "version": "0.0.0",
-  "description": "Grow a together",
+  "description": "Grow together",
   "scripts": {
     "build": "gulp build",
     "build:production": "gulp build --production",
