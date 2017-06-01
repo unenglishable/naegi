@@ -1,6 +1,7 @@
+var path = require('path');
 var crypto = require('crypto');
 var bcrypt = require('bcrypt-nodejs');
-var bookshelf = require('../config/bookshelf');
+var bookshelf = require(path.join(__dirname, '..', 'config', 'bookshelf'));
 
 var User = bookshelf.Model.extend({
   tableName: 'users',
