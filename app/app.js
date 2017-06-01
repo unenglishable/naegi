@@ -43,7 +43,7 @@ angular.module('MyApp', ['ngRoute', 'satellizer'])
     $authProvider.signupUrl = '/signup';
     $authProvider.github({
       url: '/auth/github',
-      clientId: 'c8d5bf482c0ece46fa1a'
+      clientId: config.githubClientId
     });
 
     function skipIfAuthenticated($location, $auth) {

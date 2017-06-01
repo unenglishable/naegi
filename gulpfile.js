@@ -23,6 +23,7 @@ gulp.task('sass', function() {
 
 gulp.task('angular', function() {
   return gulp.src([
+    'app/config.js',
     'app/app.js',
     'app/controllers/*.js',
     'app/services/*.js'

@@ -19,5 +19,7 @@ coverage
 
 .env
 
+/app/config.js
+
 /public/js/
 /public/css/main.css
