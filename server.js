@@ -14,11 +14,11 @@ var request = require('request');
 dotenv.load();
 
 // Models
-var User = require('./models/User');
+var User = require(path.join(__dirname, 'models', 'User'));
 
 // Controllers
-var userController = require('./controllers/user');
-var contactController = require('./controllers/contact');
+var userController = require(path.join(__dirname, 'controllers', 'user'));
+var contactController = require(path.join(__dirname, 'controllers', 'contact'));
 
 var app = express();
 
