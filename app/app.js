@@ -43,6 +43,7 @@ angular.module('MyApp', ['ngRoute', 'satellizer'])
     $authProvider.signupUrl = '/signup';
     $authProvider.github({
       url: '/auth/github',
+      redirectUri: '',
       clientId: config.githubClientId
     });
 
