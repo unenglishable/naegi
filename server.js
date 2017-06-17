@@ -17,6 +17,7 @@ dotenv.load();
 var User = require(path.join(__dirname, 'models', 'User'));
 
 // Controllers
+var branchController = require(path.join(__dirname, 'controllers', 'branch'));
 var userController = require(path.join(__dirname, 'controllers', 'user'));
 var contactController = require(path.join(__dirname, 'controllers', 'contact'));
 
@@ -53,6 +54,9 @@ app.use(function(req, res, next) {
     next();
   }
 });
+
+// branches
+app.post('/branches', branchController.createPost);
 
 app.post('/contact', contactController.contactPost);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
