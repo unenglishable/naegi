@@ -9,7 +9,7 @@ exports.createPost = function(req, res, next) {
   req.assert('name', 'Name cannot be blank').notEmpty();
   req.assert('description', 'Description cannot be more than 140 characters').optional().len({ max: 140 });
   req.assert('githubIssueNumber', 'Github issue number must be an integer').isInt();
-  req.assert('parentId', 'Branch parent id must be an integer').isInt();
+  req.assert('parentId', 'Branch parent id must be an integer').optional().isInt();
 
   // grab username, project name, and github issue number
   // to generate issue link
