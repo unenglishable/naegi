@@ -18,7 +18,7 @@ var User = require(path.join(__dirname, 'models', 'User'));
 
 // Controllers
 var userController = require(path.join(__dirname, 'controllers', 'user'));
-var contactController = require(path.join(__dirname, 'controllers', 'contact'));
+// var contactController = require(path.join(__dirname, 'controllers', 'contact'));
 
 var app = express();
 
@@ -54,7 +54,7 @@ app.use(function(req, res, next) {
   }
 });
 
-app.post('/contact', contactController.contactPost);
+// app.post('/contact', contactController.contactPost);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
 app.delete('/account', userController.ensureAuthenticated, userController.accountDelete);
 app.post('/signup', userController.signupPost);
