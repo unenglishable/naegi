@@ -57,6 +57,7 @@ app.use(function(req, res, next) {
 
 // branches
 app.post('/branches', branchController.createPost);
+app.get('/branches', branchController.allGet);
 
 app.post('/contact', contactController.contactPost);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);

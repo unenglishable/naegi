@@ -1,5 +1,5 @@
 var path = require('path');
-var Branch = require(path.join(__dirname, '..', 'models', 'Branch'));
+var Branch = Branches = require(path.join(__dirname, '..', 'models', 'Branch'));
 
 
 /**
@@ -32,4 +32,17 @@ exports.createPost = function(req, res, next) {
     })
     .catch(function(err) {
     });
+};
+
+/**
+ * GET /
+ *
+ * Get all branches
+ *
+ */
+exports.allGet = function(req, res, next) {
+  Branches.fetchAll()
+  .then(function(branches) {
+    res.send(branches);
+  });
 };
