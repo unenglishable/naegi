@@ -10,6 +10,7 @@ exports.createPost = function(req, res, next) {
   req.assert('description', 'Description cannot be more than 140 characters').optional().len({ max: 140 });
   req.assert('githubIssueNumber', 'Github issue number must be an integer').isInt();
   req.assert('parentId', 'Branch parent id must be an integer').optional().isInt();
+  req.assert('treeId', 'Branch tree id must be an integer').isInt();
 
   // grab username, project name, and github issue number
   // to generate issue link
@@ -24,6 +25,7 @@ exports.createPost = function(req, res, next) {
   new Branch({
     name: req.body.name,
     description: req.body.email,
+    treeId: req.body.treeId,
     githubIssueNumber: req.body.githubIssueNumber,
     githubIssueLink: githubIssueLink
   }).save()
