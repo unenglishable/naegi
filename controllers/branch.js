@@ -25,6 +25,7 @@ exports.createPost = function(req, res, next) {
   new Branch({
     name: req.body.name,
     description: req.body.email,
+    parentId: req.body.parentId,
     treeId: req.body.treeId,
     githubIssueNumber: req.body.githubIssueNumber,
     githubIssueLink: githubIssueLink
