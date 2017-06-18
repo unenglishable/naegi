@@ -18,6 +18,7 @@ var User = require(path.join(__dirname, 'models', 'User'));
 
 // Controllers
 var branchController = require(path.join(__dirname, 'controllers', 'branch'));
+var treesController = require(path.join(__dirname, 'controllers', 'tree'));
 var userController = require(path.join(__dirname, 'controllers', 'user'));
 var contactController = require(path.join(__dirname, 'controllers', 'contact'));
 
@@ -58,6 +59,10 @@ app.use(function(req, res, next) {
 // branches
 app.post('/branches', branchController.createPost);
 app.get('/branches', branchController.allGet);
+
+// trees
+app.post('/trees', treesController.createPost);
+app.get('/trees', treesController.allGet);
 
 app.post('/contact', contactController.contactPost);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
