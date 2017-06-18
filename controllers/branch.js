@@ -38,13 +38,22 @@ exports.createPost = function(req, res, next) {
 };
 
 /**
- * GET /
+ * GET /branches
  *
- * Get all branches
+ * Get branches by tree id
  *
  */
-exports.allGet = function(req, res, next) {
-  Branches.fetchAll()
+exports.byTreeGet = function(req, res, next) {
+  req.assert('treeId', 'Tree id must be an integer').isInt();
+
+  var errors = req.validationErrors();
+
+  if (errors) {
+    return res.status(400).send(errors);
+  }
+
+  Branches.where({ treeId: req.query.treeId })
+  .fetch()
   .then(function(branches) {
     res.send(branches);
   });

@@ -39,17 +39,3 @@ exports.allGet = function(req, res, next) {
     res.send(trees);
   });
 };
-
-/**
- * GET /:id
- *
- * Get all branches for a tree
- *
- */
-exports.branchesGet = function(req, res, next) {
-  Branches.where({ treeId: req.params.id })
-  .fetch()
-  .then(function(branches) {
-    res.send(branches);
-  });
-};
