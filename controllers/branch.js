@@ -3,7 +3,7 @@ var Branch = Branches = require(path.join(__dirname, '..', 'models', 'Branch'));
 
 
 /**
- * POST /create
+ * POST /
  */
 exports.createPost = function(req, res, next) {
   req.assert('name', 'Name cannot be blank').notEmpty();
