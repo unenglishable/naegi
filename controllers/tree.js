@@ -1,6 +1,6 @@
 var path = require('path');
 var Tree = Trees = require(path.join(__dirname, '..', 'models', 'Tree'));
-
+var Branches = require(path.join(__dirname, '..', 'models', 'Branch'));
 
 /**
  * POST /
@@ -37,5 +37,19 @@ exports.allGet = function(req, res, next) {
   Trees.fetchAll()
   .then(function(trees) {
     res.send(trees);
+  });
+};
+
+/**
+ * GET /:id
+ *
+ * Get all branches for a tree
+ *
+ */
+exports.branchesGet = function(req, res, next) {
+  Branches.where({ treeId: req.params.id })
+  .fetch()
+  .then(function(branches) {
+    res.send(branches);
   });
 };

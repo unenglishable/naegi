@@ -63,6 +63,7 @@ app.get('/branches', branchController.allGet);
 // trees
 app.post('/trees', treesController.createPost);
 app.get('/trees', treesController.allGet);
+app.get('/trees/:id', treesController.branchesGet);
 
 app.post('/contact', contactController.contactPost);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
