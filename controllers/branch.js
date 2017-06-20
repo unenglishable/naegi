@@ -40,6 +40,9 @@ exports.createPost = function(req, res, next) {
     })
     .catch(function(err) {
     });
+  })
+  .catch(Tree.NotFoundError, function() {
+    return res.status(400).send({ msg: `Tree ${req.body.treeId} not found` });
   });
 };
 
