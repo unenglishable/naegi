@@ -37,7 +37,6 @@ describe('POST /trees', function() {
     });
   });
   after('delete created tree', function() {
-    console.log('treeid', treeOptions.id);
     return Tree.where({ id: treeOptions.id })
     .destroy();
   });
@@ -80,7 +79,6 @@ describe('GET /trees', function() {
     });
   });
   after('delete created tree', function() {
-    console.log('treeid', treeOptions.id);
     return Tree.where({ id: treeOptions.id })
     .destroy();
   });
