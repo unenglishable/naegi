@@ -9,7 +9,7 @@
     "serve": "node server.js",
     "test": "npm run test:server",
     "test:client": "karma start app/karma.conf.js --single-run",
-    "test:server": "mocha --recursive",
+    "test:server": "(NODE_ENV=test knex migrate:latest && NODE_ENV=test mocha --recursive)",
     "watch": "gulp"
   },
   "dependencies": {
