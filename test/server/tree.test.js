@@ -1,6 +1,7 @@
 var path = require('path');
 var request = require('supertest');
 var server = require(path.join(__dirname, '..', '..', 'server'));
+var Tree = require(path.join(__dirname, '..', '..', 'models', 'Tree'));
 var expect = require('chai').expect;
 
 // Trees
@@ -69,5 +70,10 @@ describe('GET /trees', function() {
       expect(response.body.repo).to.equal(treeOptions.repo);
       expect(response.body.description).to.equal(treeOptions.description);
     });
+  });
+  after('delete created tree', function() {
+    console.log('treeid', treeOptions.id);
+    return Tree.where({ id: treeOptions.id })
+    .destroy();
   });
 });
