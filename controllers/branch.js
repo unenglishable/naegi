@@ -1,5 +1,6 @@
 var path = require('path');
 var Branch = Branches = require(path.join(__dirname, '..', 'models', 'Branch'));
+var Tree = require(path.join(__dirname, '..', 'models', 'Tree'));
 
 
 /**
@@ -22,19 +23,24 @@ exports.createPost = function(req, res, next) {
     return res.status(400).send(errors);
   }
 
-  new Branch({
-    name: req.body.name,
-    description: req.body.email,
-    parentId: req.body.parentId,
-    treeId: req.body.treeId,
-    githubIssueNumber: req.body.githubIssueNumber,
-    githubIssueLink: githubIssueLink
-  }).save()
+  Tree.where({ id: req.body.treeId }).fetch()
+  .then(function(tree) {
+
+    return new Branch({
+      name: req.body.name,
+      description: req.body.email,
+      parentId: req.body.parentId,
+      treeId: req.body.treeId,
+      githubIssueNumber: req.body.githubIssueNumber,
+      githubIssueLink: githubIssueLink
+    })
+    .save()
     .then(function(branch) {
       res.send(branch);
     })
     .catch(function(err) {
     });
+  });
 };
 
 /**
