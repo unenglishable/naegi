@@ -7,9 +7,9 @@ var Branches = require(path.join(__dirname, '..', 'models', 'Branch'));
  * create a tree
  */
 exports.createPost = function(req, res, next) {
-  req.assert('name', 'Name cannot be blank').notEmpty();
+  req.assert('username', 'username cannot be blank').notEmpty();
+  req.assert('repo', 'repo cannot be blank').notEmpty();
   req.assert('description', 'Description cannot be more than 140 characters').optional().len({ max: 140 });
-  req.assert('githubRepoLink', 'Github repo link is not a URL').isURL();
 
   var errors = req.validationErrors();
 
@@ -18,9 +18,9 @@ exports.createPost = function(req, res, next) {
   }
 
   new Tree({
-    name: req.body.name,
     description: req.body.description,
-    githubRepoLink: req.body.githubRepoLink
+    username: req.body.username,
+    repo: req.body.repo
   }).save()
     .then(function(tree) {
         res.send(tree);
