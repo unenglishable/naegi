@@ -17,6 +17,8 @@ dotenv.load();
 var User = require(path.join(__dirname, 'models', 'User'));
 
 // Controllers
+var branchController = require(path.join(__dirname, 'controllers', 'branch'));
+var treesController = require(path.join(__dirname, 'controllers', 'tree'));
 var userController = require(path.join(__dirname, 'controllers', 'user'));
 // var contactController = require(path.join(__dirname, 'controllers', 'contact'));
 
@@ -53,6 +55,15 @@ app.use(function(req, res, next) {
     next();
   }
 });
+
+// branches
+app.post('/branches', branchController.createPost);
+app.get('/branches', branchController.byTreeGet);
+
+// trees
+app.post('/trees', treesController.createPost);
+app.get('/trees', treesController.allGet);
+app.get('/trees/:id', treesController.findGet);
 
 // app.post('/contact', contactController.contactPost);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
