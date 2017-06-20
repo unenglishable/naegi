@@ -39,3 +39,24 @@ exports.allGet = function(req, res, next) {
     res.send(trees);
   });
 };
+
+/**
+ * GET /:id
+ *
+ * Find info for tree
+ *
+ */
+exports.findGet = function(req, res, next) {
+  req.checkParams('id', 'id must be an integer').isInt();
+
+  var errors = req.validationErrors();
+
+  if (errors) {
+    return res.status(400).send(errors);
+  }
+
+  Trees.where({ id: req.params.id }).fetch()
+  .then(function(tree) {
+    res.send(tree);
+  });
+};
