@@ -6,12 +6,13 @@ var expect = require('chai').expect;
 
 // Trees
 describe('POST /trees', function() {
+  var treeOptions = {
+    username: 'Dizzney',
+    repo: 'Rattatatouille',
+    description: 'A movie about a rat, who can cook!'
+  };
+
   it('should create a tree', function() {
-    var treeOptions = {
-      username: 'Dizzney',
-      repo: 'Rattatatouille',
-      description: 'A movie about a rat, who can cook!'
-    };
     return request(server)
     .post('/trees')
     .send(treeOptions)
@@ -31,7 +32,14 @@ describe('POST /trees', function() {
       expect(response.body.username).to.equal(treeOptions.username);
       expect(response.body.repo).to.equal(treeOptions.repo);
       expect(response.body.description).to.equal(treeOptions.description);
+
+      treeOptions.id = response.body.id;
     });
+  });
+  after('delete created tree', function() {
+    console.log('treeid', treeOptions.id);
+    return Tree.where({ id: treeOptions.id })
+    .destroy();
   });
 });
 
