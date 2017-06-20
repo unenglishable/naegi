@@ -7,7 +7,7 @@
     "build:production": "gulp build --production",
     "postinstall": "npm run build:production",
     "serve": "node server.js",
-    "test": "npm run test:server && npm run test:client",
+    "test": "npm run test:server",
     "test:client": "karma start app/karma.conf.js --single-run",
     "test:server": "mocha --recursive",
     "watch": "gulp"
