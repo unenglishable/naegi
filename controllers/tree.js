@@ -19,7 +19,7 @@ exports.createPost = function(req, res, next) {
 
   new Tree({
     name: req.body.name,
-    description: req.body.email,
+    description: req.body.description,
     githubRepoLink: req.body.githubRepoLink
   }).save()
     .then(function(tree) {
