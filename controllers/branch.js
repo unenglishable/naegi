@@ -31,7 +31,7 @@ exports.createPost = function(req, res, next) {
     githubIssueLink: githubIssueLink
   }).save()
     .then(function(branch) {
-        res.send(branch);
+      res.send(branch);
     })
     .catch(function(err) {
     });
