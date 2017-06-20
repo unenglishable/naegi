@@ -13,10 +13,6 @@ exports.createPost = function(req, res, next) {
   req.assert('parentId', 'Branch parent id must be an integer').optional().isInt();
   req.assert('treeId', 'Branch tree id must be an integer').isInt();
 
-  // grab username, project name, and github issue number
-  // to generate issue link
-  var githubIssueLink = `https://github.com/${username}/${project}/issues/${req.body.githubIssueNumber}`;
-
   var errors = req.validationErrors();
 
   if (errors) {
@@ -25,6 +21,11 @@ exports.createPost = function(req, res, next) {
 
   Tree.where({ id: req.body.treeId }).fetch()
   .then(function(tree) {
+    var githubRepoLink = tree.githubRepoLink();
+
+    // grab username, project name, and github issue number
+    // to generate issue link
+    var githubIssueLink = `${githubRepoLink}/issues/${req.body.githubIssueNumber}`;
 
     return new Branch({
       name: req.body.name,
