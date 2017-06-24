@@ -6,10 +6,10 @@ angular.module('MyApp', ['ngRoute', 'satellizer'])
       .when('/', {
         templateUrl: 'partials/home.html'
       })
-      .when('/contact', {
-        templateUrl: 'partials/contact.html',
-        controller: 'ContactCtrl'
-      })
+      // .when('/contact', {
+      //   templateUrl: 'partials/contact.html',
+      //   controller: 'ContactCtrl'
+      // })
       .when('/login', {
         templateUrl: 'partials/login.html',
         controller: 'LoginCtrl',
