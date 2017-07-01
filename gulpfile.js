@@ -7,6 +7,7 @@ var templateCache = require('gulp-angular-templatecache');
 var autoprefixer = require('gulp-autoprefixer');
 var sass = require('gulp-sass');
 var csso = require('gulp-csso');
+var bower = require('gulp-bower');
 var buffer = require('vinyl-buffer');
 var uglify = require('gulp-uglify');
 var sourcemaps = require('gulp-sourcemaps');
@@ -47,11 +48,16 @@ gulp.task('vendor', function() {
     .pipe(gulp.dest('public/js/lib'));
 });
 
+gulp.task('bower', function() {
+  return bower()
+    .pipe(gulp.dest('public/js/lib'));
+});
+
 gulp.task('watch', function() {
   gulp.watch('public/css/**/*.scss', ['sass']);
   gulp.watch('app/partials/**/*.html', ['templates']);
   gulp.watch('app/**/*.js', ['angular']);
 });
 
-gulp.task('build', ['sass', 'angular', 'vendor', 'templates']);
+gulp.task('build', ['sass', 'angular', 'bower', 'templates']);
 gulp.task('default', ['build', 'watch']);
