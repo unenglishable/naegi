@@ -1,0 +1,17 @@
+{
+  "name": "naegi",
+  "description": "Grow together",
+  "main": "",
+  "authors": [
+    "unenglishable"
+  ],
+  "homepage": "naegi.io",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
