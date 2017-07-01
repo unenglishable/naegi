@@ -36,7 +36,7 @@ exports.createPost = function(req, res, next) {
 exports.allGet = function(req, res, next) {
   Trees.fetchAll()
   .then(function(trees) {
-    res.send(trees);
+    res.send({ trees: trees });
   });
 };
 
