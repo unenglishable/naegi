@@ -21,7 +21,7 @@ exports.createPost = function(req, res, next) {
 
   Tree.where({ id: req.body.treeId }).fetch()
   .then(function(tree) {
-    var githubRepoLink = tree.githubRepoLink();
+    var githubRepoLink = tree.get('githubRepoLink');
 
     // grab username, project name, and github issue number
     // to generate issue link
