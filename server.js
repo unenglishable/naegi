@@ -57,13 +57,13 @@ app.use(function(req, res, next) {
 });
 
 // branches
-app.post('/branches', branchController.createPost);
-app.get('/branches', branchController.byTreeGet);
+app.post('/api/branches', branchController.createPost);
+app.get('/api/branches', branchController.byTreeGet);
 
 // trees
-app.post('/trees', treesController.createPost);
+app.post('/api/trees', treesController.createPost);
 app.get('/api/trees', treesController.allGet);
-app.get('/trees/:id', treesController.findGet);
+app.get('/api/trees/:id', treesController.findGet);
 
 // app.post('/contact', contactController.contactPost);
 app.put('/account', userController.ensureAuthenticated, userController.accountPut);
