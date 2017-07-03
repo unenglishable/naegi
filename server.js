@@ -57,8 +57,8 @@ app.use(function(req, res, next) {
 });
 
 // branches
-app.post('/branches', branchController.createPost);
-app.get('/branches', branchController.byTreeGet);
+app.post('/api/branches', branchController.createPost);
+app.get('/api/branches', branchController.byTreeGet);
 
 // trees
 app.post('/trees', treesController.createPost);
