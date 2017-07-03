@@ -68,3 +68,25 @@ exports.byTreeGet = function(req, res, next) {
     res.send(branches);
   });
 };
+
+/**
+ * GET /api/branches/:id
+ *
+ * Get a branch by id
+ *
+ */
+exports.findGet = function(req, res, next) {
+  req.checkParams('id', 'Branch id must be an integer').isInt();
+
+  var errors = req.validationErrors();
+
+  if (errors) {
+    return res.status(400).send(errors);
+  }
+
+  Branches.where({ id: req.params.id })
+  .fetch()
+  .then(function(branch) {
+    res.send({ branch });
+  });
+};
