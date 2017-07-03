@@ -4,7 +4,8 @@
       <div class="col-sm-4">
         <div class="panel">
           <div class="panel-body">
-            <h3>{{tree.repo}}</h3>
+            <h3>{{tree.username}}/{{tree.repo}}</h3>
+            <p><a ng-href="{{tree.githubRepoLink}}">View on GitHub</a></p>
             <p>{{tree.description}}</p>
             <a href="#" role="button" class="btn btn-default">View details</a>
           </div>
