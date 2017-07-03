@@ -6,13 +6,17 @@ var Tree = Trees = bookshelf.Model.extend({
   tableName: 'trees',
   hasTimestamps: true,
 
-  githubRepoLink: function() {
-    var username = this.get('username');
-    var repo = this.get('repo');
-    return `https://github.com/${username}/${repo}`;
-  },
   branches: function() {
     return this.hasMany(Branches);
+  },
+  initialize: function() {
+    this.on('saving', this.generateGithubRepoLink, this);
+  },
+  generateGithubRepoLink: function(model, attrs, options) {
+    var repo = attrs.repo || model.get('repo');
+    var username = attrs.username || model.get('username');
+
+    this.set({ githubRepoLink: `https://github.com/${username}/${repo}` });
   }
 });
 
