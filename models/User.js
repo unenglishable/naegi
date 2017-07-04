@@ -2,6 +2,7 @@ var path = require('path');
 var crypto = require('crypto');
 var bcrypt = require('bcrypt-nodejs');
 var bookshelf = require(path.join(__dirname, '..', 'config', 'bookshelf'));
+var Trees = require(path.join(__dirname, 'Tree'));
 
 var User = bookshelf.Model.extend({
   tableName: 'users',
@@ -32,6 +33,10 @@ var User = bookshelf.Model.extend({
     bcrypt.compare(password, model.get('password'), function(err, isMatch) {
       done(err, isMatch);
     });
+  },
+
+  trees: function() {
+    return this.hasMany(Trees);
   },
 
   hidden: ['password', 'passwordResetToken', 'passwordResetExpires'],
