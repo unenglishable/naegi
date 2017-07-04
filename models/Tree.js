@@ -1,11 +1,15 @@
 var path = require('path');
 var bookshelf = require(path.join(__dirname, '..', 'config', 'bookshelf'));
 var Branches = require(path.join(__dirname, 'Branch'));
+var User = require(path.join(__dirname, 'User'));
 
 var Tree = Trees = bookshelf.Model.extend({
   tableName: 'trees',
   hasTimestamps: true,
 
+  user: function() {
+    return this.belongsTo(User);
+  },
   branches: function() {
     return this.hasMany(Branches);
   },
