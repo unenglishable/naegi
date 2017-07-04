@@ -43,9 +43,12 @@ exports.allGet = function(req, res, next) {
     return res.sendStatus(401);
   }
 
-  Trees.fetchAll()
-  .then(function(trees) {
-    res.send({ trees: trees });
+  req.user.fetch({ withRelated: 'trees' })
+  .then(function(user) {
+    res.send({ trees: user.related('trees') });
+  })
+  .catch(function(error) {
+    res.status(500).send(error);
   });
 };
 
