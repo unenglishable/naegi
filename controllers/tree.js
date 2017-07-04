@@ -39,6 +39,10 @@ exports.createPost = function(req, res, next) {
  *
  */
 exports.allGet = function(req, res, next) {
+  if (!req.isAuthenticated()) {
+    return res.sendStatus(401);
+  }
+
   Trees.fetchAll()
   .then(function(trees) {
     res.send({ trees: trees });
