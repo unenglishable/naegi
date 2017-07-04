@@ -22,6 +22,7 @@ exports.createPost = function(req, res, next) {
   }
 
   new Tree({
+    user_id: req.user.get('id'),
     description: req.body.description,
     username: req.body.username,
     repo: req.body.repo
