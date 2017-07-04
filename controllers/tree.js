@@ -7,6 +7,10 @@ var Branches = require(path.join(__dirname, '..', 'models', 'Branch'));
  * create a tree
  */
 exports.createPost = function(req, res, next) {
+  if (!req.isAuthenticated()) {
+    return res.sendStatus(401);
+  }
+
   req.assert('username', 'username cannot be blank').notEmpty();
   req.assert('repo', 'repo cannot be blank').notEmpty();
   req.assert('description', 'Description cannot be more than 140 characters').optional().len({ max: 140 });
