@@ -27,8 +27,9 @@
         </li>
       </ul>
       <ul ng-if="!isAuthenticated()" class="nav navbar-nav navbar-right">
-        <li ng-class="{ active: isActive('/login')}"><a href="/login">Log in</a></li>
-        <li ng-class="{ active: isActive('/signup')}"><a href="/signup">Sign up</a></li>
+        <div class="btn-toolbar text-center">
+          <button class="btn btn-github" ng-click="authenticate('github')">Sign in with Github</button>
+        </div>
       </ul>
     </div>
   </div>
